@@ -1,32 +1,31 @@
 # coding=utf-8
 
-import os
-import logging
 from configparser import ConfigParser
-import schedule
-import time
+from project import base_project_path
 
 
-class TestClass():
-    def test_fun(self):
-        logger = logging.getLogger(self.__class__.__name__)
-        fmt = '%(asctime)s - %(filename)s - %(name)s - %(funcName)s - %(lineno)d - %(levelname)s - %(message)s'
-        logger.setLevel(logging.DEBUG)
-        sh = logging.StreamHandler()
-        sh.setFormatter(logging.Formatter(fmt))
-        logger.addHandler(sh)
-        logger.debug('hello world')
+class ProjectConfig:
+    config_dir = 'config/project.cfg'
+    config = {}
 
+    def __init__(self):
+        cp = ConfigParser()
+        cp.read(base_project_path+self.config_dir)
+        for section in cp.sections():
+            self.config[section.upper()] = {}
+            for option in cp.options(section=section):
+                temp = cp.get(section=section, option=option)
+                if option == 'fmt':
+                    temp = self.resolve_fmt(temp)
+                self.config[section.upper()][option.upper()] = temp
 
-def job():
-    print('working')
-
-
-if __name__ == '__main__':
-    tc = TestClass()
-    schedule.every(5).seconds.do(job)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
+    @classmethod
+    def resolve_fmt(cls, old_fmt):
+        arr_old_fmt = old_fmt.split('-')
+        arr_new_fmt = []
+        for st in arr_old_fmt:
+            if st == "lineno":
+                arr_new_fmt.append('%(' + st + ')d')
+            else:
+                arr_new_fmt.append('%('+st+')s')
+        return "-".join(arr_new_fmt)

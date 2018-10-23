@@ -7,7 +7,7 @@ from project import base_project_path
 req_path = "requirements.txt"
 # ChromeDriver淘宝下载镜像链接
 chrome_driver_link = "http://npm.taobao.org/mirrors/chromedriver/2.43/chromedriver_win32.zip"
-firefox_driver_link = "https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-win64.zip"
+firefox_driver_link = "http://npm.taobao.org/mirrors/geckodriver/v0.23.0/geckodriver-v0.23.0-win64.zip"
 
 
 def download_and_unzip_drivers(driver_link):
