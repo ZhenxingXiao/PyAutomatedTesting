@@ -3,7 +3,7 @@
 import logging
 from logging.handlers import TimedRotatingFileHandler, RotatingFileHandler
 from config.configuration import ProjectConfig
-from project import base_project_path
+from __project__path__ import base_project_path
 
 
 class LogFactory:

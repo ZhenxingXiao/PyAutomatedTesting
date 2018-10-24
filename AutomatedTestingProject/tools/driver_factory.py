@@ -1,9 +1,9 @@
 # coding=utf-8
 from enum import Enum
-from project import base_project_path
 from config.configuration import ProjectConfig
 from selenium import webdriver
 from tools.log_factory import LogFactory
+from __project__path__ import base_project_path
 
 
 class WebDrivers(Enum):
@@ -13,14 +13,14 @@ class WebDrivers(Enum):
 
 class DriverFactory():
 
-    def __init__(self):
-        self.logger = LogFactory.get_instance(self.__class__.__name__)
+    @staticmethod
+    def driver():
+        logger = LogFactory.get_instance('DriverFactory')
         config = ProjectConfig().config['WEBDRIVER']
         try:
-            if config['DRIVER_NAME'] == 'ChromeDiver':
-                self.driver = webdriver.Chrome(WebDrivers.ChromeDiver)
+            if config['DRIVER_NAME'] == 'ChromeDriver':
+                return webdriver.Chrome(WebDrivers.ChromeDiver.value)
             elif config['DRIVER_NAME'] == 'FirefoxDriver':
-                self.driver = webdriver.Firefox(WebDrivers.FirefoxDriver)
-                raise NameError('web driver not found')
+                return webdriver.Firefox(WebDrivers.FirefoxDriver.value)
         except Exception as e:
-            self.logger.debug('web driver not found')
+            logger.debug('web driver not found')

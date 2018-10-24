@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from configparser import ConfigParser
-from project import base_project_path
+from __project__path__ import base_project_path
 
 
 class ProjectConfig:

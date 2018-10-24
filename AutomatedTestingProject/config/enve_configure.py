@@ -2,7 +2,7 @@
 
 import os
 import zipfile
-from project import base_project_path
+from __project__path__ import base_project_path
 
 req_path = "requirements.txt"
 # ChromeDriver淘宝下载镜像链接
