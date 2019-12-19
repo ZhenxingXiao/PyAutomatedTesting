@@ -4,7 +4,7 @@ lxml==4.2.5
 matplotlib==3.0.0
 pycurl==7.43.0.2
 pyparsing==2.2.2
-requests==2.19.1
+requests==2.20.0
 selenium==3.14.1
 urllib3==1.24.2
 webdavclient==1.0.8
