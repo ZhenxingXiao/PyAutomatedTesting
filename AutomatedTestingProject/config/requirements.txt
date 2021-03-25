@@ -8,6 +8,6 @@ requests==2.22.0
 selenium==3.14.1
 urllib3==1.24.2
 webdavclient==1.0.8
-PyYAML==5.1
+PyYAML==5.4
 schedule==0.5.0
 watchdog==0.9.0
