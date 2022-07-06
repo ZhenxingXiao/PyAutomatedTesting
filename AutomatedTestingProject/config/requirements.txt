@@ -1,6 +1,6 @@
 beautifulsoup4==4.4.0
 docx-mailmerge==0.4.0
-lxml==4.6.3
+lxml==4.9.1
 matplotlib==3.0.0
 pycurl==7.43.0.2
 pyparsing==2.2.2
